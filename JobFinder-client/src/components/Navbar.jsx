@@ -13,7 +13,7 @@ const Navbar = () => {
           path: "/", title:"Start a search"  
         },
         {
-            path: "/my-job", title:"My Jobs",
+            path: "/my-job", title:"Posted jobs",
           },
           
           {

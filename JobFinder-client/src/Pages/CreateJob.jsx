@@ -152,7 +152,7 @@ const CreateJob = () => {
       <textarea className='w-full pl-3 py-1.5 focus:outline-none' 
       rows={6}
       placeholder='Job Description'
-      defaultValue={"Our job...."}
+      defaultValue={""}
       
       
       {...register("description")}></textarea>
