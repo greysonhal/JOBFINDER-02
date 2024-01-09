@@ -42,12 +42,12 @@ const CreateJob = () => {
   return (
     <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4'>
         {/* form */}
-        <div className='bg-gray-400 bg-opacity-50 py-10px-4 lg:px-16' >
+        <div className='bg-gray-400 bg-opacity-40 py-10px-4 lg:px-16 mt-4' >
        
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
       <div className='create-job-flex'>
         {/*1st row */}
-         <div className='lg:w-1/2 w-full'>
+         <div className='lg:w-1/2 w-full mt-5'>
             <label className='block mb-2 text-lg'>Job Title</label>
             <input type='text' defaultValue={"Web Developer"} {...register('jobTitle' )} className='create-job-input'/>
          </div>

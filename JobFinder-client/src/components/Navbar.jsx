@@ -15,9 +15,7 @@ const Navbar = () => {
         {
             path: "/my-job", title:"My Jobs",
           },
-          {
-            path: "salary", title:"Salary Estimate"  
-          },
+          
           {
             path: "/post-job", title:"Post A Job"  
           },
@@ -31,10 +29,10 @@ const Navbar = () => {
             </svg><span>JobFinder</span></a>
 
             {/*nav items for large devices*/}
-            <ul className="hidden md:flex gap-12">
+            <ul className="hidden md:flex gap-12 w-1/2 justify-around">
                 {
                     navItems.map(({path,title})=>(
-                        <li key={path} className="text-base text-primary">
+                        <li key={path} className="text-base text-primary flex-grow">
                            <NavLink
   to={path}
   className={({ isActive, isPending }) =>
