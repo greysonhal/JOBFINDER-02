@@ -42,7 +42,7 @@ const CreateJob = () => {
   return (
     <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4'>
         {/* form */}
-        <div className='bg-gray-300 py-10px-4 lg:px-16' >
+        <div className='bg-gray-400 bg-opacity-50 py-10px-4 lg:px-16' >
        
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
       <div className='create-job-flex'>

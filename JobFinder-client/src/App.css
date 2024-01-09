@@ -108,6 +108,17 @@ li {
   background-color: #eee;
   border-radius: 50%;
 }
+.blended-background {
+  position: relative;
+  background-image: conic-gradient(at center top, rgb(14, 165, 233), rgb(254, 215, 170), rgb(202, 138, 4)),
+                    linear-gradient(to right, rgba(202, 138, 4, 0.5), rgba(236, 185, 74, 0.5));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding: 20px; /* Adjust as needed */
+}
+
 
 .all {
   background: linear-gradient(blue, crimson);
