@@ -58,8 +58,10 @@ async function run() {
         res.send(jobs);
        })
 
-
-
+      app.get("/myJobs/:email", async(req,res)=>{
+           const jobs = await jobsCollections.find({postingBy: req.params.email}).toArray();
+           res.send(jobs);
+      })
 
 
 
