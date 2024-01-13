@@ -6,7 +6,10 @@ body{
   
 }
 
-
+.myText {
+  font-size: 0.875rem;
+  color: grey;
+}
 
 .active{
   color: #3575E2;

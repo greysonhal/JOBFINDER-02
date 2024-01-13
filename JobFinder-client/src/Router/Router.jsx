@@ -7,6 +7,8 @@ import {
   import '../index.css'
 import CreateJob from "../Pages/CreateJob";
 import MyJobs from "../Pages/MyJobs";
+import UpdateJob from "../Pages/UpdateJob";
+import Login from "../Pages/Login";
   
 
 
@@ -27,7 +29,15 @@ const router = createBrowserRouter([
         path:"/my-job",
         element: <MyJobs/>
     },
-      
+    {
+      path:"/edit-job/:id",
+      element: <UpdateJob/>,
+      loader: ({params})=> fetch(`http://localhost:5000/all-jobs/${params.id}`)
+  },
+  {
+    path:"/login",
+    element: <Login/>
+},
         
       ]
 

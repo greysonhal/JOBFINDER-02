@@ -49,6 +49,7 @@ const Home = () => {
   //------RADIO FILTERING-----
   const handleChange= (event)=>{
     setSelectedCategory(event.target.value);
+    setCurrentPage(1);
     // Add automatic scrolling on mobile devices
   if (window.innerWidth <= 768) {
     window.scrollTo({
@@ -128,10 +129,10 @@ const Home = () => {
      <Banner query={query} handleInputChange={handleInputChange}/>
 
      {/*----main content*/}
-         <div className=' md:grid grid-cols-4 gap-8 lg:px-24 px-4 py-12'>
+         <div className=' md:grid grid-cols-4 gap-8 lg:px-24 px-4 py-12 '>
 
           {/*---left side----*/}
-          <div className='bg-white p-4 rounded h-[1200px]'>
+          <div className='bg-white p-4 rounded h-[1200px] '>
             <Sidebar handleChange={handleChange} handleClick={handleClick}/>
           </div>
 
@@ -143,7 +144,7 @@ const Home = () => {
             {isLoading ? (<p className='font-medium'>Loading....</p>):result.length > 0 ?(<Jobs result={result}/>):<>
             <h3 className='text-lg font-bold mb-2'>{result.length} Jobs</h3>
             <p>No data found</p>
-            <button onClick={prevPage} disabled={currentPage=== 1} className='hover:underline'>Back to Previous Page</button>
+            <button onClick={prevPage} disabled={currentPage=== 1} className='hover:underline appearance-none bg-transparent border-none cursor-pointer '>Back to Previous Page</button>
             </>}
             {/*pagination here */}
             {
