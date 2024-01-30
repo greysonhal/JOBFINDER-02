@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useState, useContext}from 'react'
 import { useForm } from "react-hook-form"
 import CreatableSelect from "react-select/creatable"
-import { useState } from 'react'
+
+import { AuthContext } from "../context/AuthProvider";
 const CreateJob = () => {
     const[selectedOption, setSelectedOption]= useState(null);
+    const { user } = useContext(AuthContext)
+
     const {
         register,
         handleSubmit,reset,
@@ -163,7 +166,9 @@ const CreateJob = () => {
       {/*last row */}
       <div className='w-full'>
         <label className='block mb-2 text-lg'>Job Posted By</label>
-        <input type='email' placeholder='your email' {...register('postingBy' )} className='create-job-input'/>
+        <input type='email' 
+         value={user?.email}
+        placeholder='your email' {...register('postingBy' )} className='create-job-input'/>
       </div>
 
 

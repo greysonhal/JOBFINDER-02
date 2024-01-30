@@ -9,6 +9,9 @@ import CreateJob from "../Pages/CreateJob";
 import MyJobs from "../Pages/MyJobs";
 import UpdateJob from "../Pages/UpdateJob";
 import Login from "../Pages/Login";
+import Signup from "../Pages/Signup";
+import SignSeeker from "../Pages/SignSeeker";
+import SignEmployer from "../Pages/SignEmployer";
   
 
 
@@ -34,13 +37,27 @@ const router = createBrowserRouter([
       element: <UpdateJob/>,
       loader: ({params})=> fetch(`http://localhost:5000/all-jobs/${params.id}`)
   },
-  {
-    path:"/login",
-    element: <Login/>
-},
+  
+
         
       ]
 
+    }, 
+    {
+      path: "/login",
+      element: <Login/>
+    },
+    {
+      path: "/SignUp",
+      element: <Signup/>
+    },
+    {
+      path: "/sign-seeker",
+      element: <SignSeeker/>
+    },
+    {
+      path: "/sign-employer",
+      element: <SignEmployer/>
     },
   ]);
 

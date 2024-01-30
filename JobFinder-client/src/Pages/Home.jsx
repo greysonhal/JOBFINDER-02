@@ -41,6 +41,17 @@ const Home = () => {
   const handleInputChange=(event)=>{
       setQuery(event.target.value)
   }
+  const handleSearch = (value) => {
+    setQuery(value);
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Call the handleSearch function with the current query value
+    handleSearch(query);
+    console.log('searc')
+  }
+  
+  
   // filter jobs by title
   const filteredItems = jobs.filter((job)=>job.jobTitle.toLowerCase().indexOf(query.toLowerCase()) !==-1)
   //console.log(filteredItems);
@@ -126,7 +137,7 @@ const Home = () => {
     const result= filteredData(jobs,selectedCategory,query);
   return (
     <div  >
-     <Banner query={query} handleInputChange={handleInputChange}/>
+     <Banner query={query} handleInputChange={handleInputChange} handleSubmit={handleSubmit} handleSearch={handleSearch}/>
 
      {/*----main content*/}
          <div className=' md:grid grid-cols-4 gap-8 lg:px-24 px-4 py-12 '>

@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext,useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../context/AuthProvider";
 
 const MyJobs = () => {
+  const { user } = useContext(AuthContext);
       const [jobs,setJobs]= useState([]);
       const [searchText,setSearchText]= useState("");
       const [isLoading,setIsLoading]= useState(true);
@@ -11,14 +13,16 @@ const MyJobs = () => {
       const itemsPerPage = 4;
 
 
-      useEffect(()=>{
-          setIsLoading(true);
-          fetch('http://localhost:5000/myJobs/GRASONHALL@gmail.com').then(res=> res.json()).then(data=>{
+      useEffect(() => {
+        setIsLoading(true);
+        fetch(`http://localhost:5000/myJobs/${user?.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
             setJobs(data);
             setIsLoading(false);
-          })
-
-      },[searchText])
+          });
+      }, [searchText, user]);
 
         //pagination
         const indexOfLastItem = currentPage * itemsPerPage;
