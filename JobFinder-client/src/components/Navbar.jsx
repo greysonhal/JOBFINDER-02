@@ -131,19 +131,38 @@ const Navbar = () => {
         </div>
 
         {/* mobile menu */}
-        <div className="md:hidden block">
-          <button onClick={handleMenuToggler}>
-            {isMenuOpen ? (
-              <>
+        <div className="md:hidden flex justify-between items-center">
+     
+        {authuser && (
+          <div className="flex items-center gap-4">
+            <div className="flex -space-x-2 overflow-hidden">
+              {authuser?.photoURL ? (
+                <img
+                  className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                  src={authuser?.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              )}
+            </div>
+            <button
+              onClick={handleMenuToggler}
+              className="text-2xl text-white"
+            >
+              {isMenuOpen ? (
                 <FaXmark className="w-5 h-5 text-primary/75" />
-              </>
-            ) : (
-              <>
+              ) : (
                 <FaBarsStaggered className="w-5 h-5 text-primary/75" />
-              </>
-            )}
-          </button>
-        </div>
+              )}
+            </button>
+          </div>
+        )}
+      </div>
       </nav>
 
       {/* mobile menu items */}
@@ -153,24 +172,47 @@ const Navbar = () => {
         }`}
       >
         <ul>
-          {navItems.map(({ path, title }) => (
-            <li
-              key={path}
-              className="text-base text-white first:text-white py-1"
-            >
-              <NavLink
-                onClick={handleMenuToggler}
-                to={path}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                {title}
-              </NavLink>
-            </li>
-          ))}
-
-          <li className="text-white py-1">
-            <Link to="login">Log in</Link>
-          </li>
+          {authuser ? (
+            <>
+              {authuser.displayName === "seeker" && (
+                <li className="text-base text-white py-1">
+                  <NavLink to="/">Start a search</NavLink>
+                </li>
+              )}
+              {authuser.displayName === "employer" && (
+                <>
+                  {navItems.map(({ path, title }) => (
+                    <li
+                      key={path}
+                      className="text-base text-white first:text-white py-1"
+                    >
+                      <NavLink
+                        onClick={handleMenuToggler}
+                        to={path}
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                      >
+                        {title}
+                      </NavLink>
+                    </li>
+                  ))}
+                </>
+              )}
+              <li className="text-white py-1">
+                <button onClick={handleLogout} className="text-base text-white py-1">
+                  Log out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="text-white py-1">
+                <Link to="/login">Log in</Link>
+              </li>
+              <li className="text-white py-1">
+                <Link to="/SignUp">Sign Up</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>

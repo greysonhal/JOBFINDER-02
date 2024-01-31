@@ -150,7 +150,7 @@ const Home = () => {
                 
 
               {/* JOB CARDS*/}
-          <div className='col-span-3 bg-white p-4 rounded-sm w-full' id='job-card'>
+          <div className='col-span-3 bg-white p-4 rounded-sm w-full ' id='job-card'>
             
             {isLoading ? (<p className='font-medium'>Loading....</p>):result.length > 0 ?(<Jobs result={result}/>):<>
             <h3 className='text-lg font-bold mb-2'>{result.length} Jobs</h3>
