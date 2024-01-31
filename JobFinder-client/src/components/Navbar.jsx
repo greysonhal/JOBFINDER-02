@@ -129,7 +129,7 @@ const Navbar = () => {
             </>
           )}
         </div>
-
+           
         {/* mobile menu */}
         <div className="md:hidden block">
           <button onClick={handleMenuToggler}>
@@ -152,6 +152,7 @@ const Navbar = () => {
           isMenuOpen ? "" : "hidden"
         }`}
       >
+        
         <ul>
           {authuser ? (
             <>
@@ -211,6 +212,7 @@ const Navbar = () => {
           )}
         </ul>
       </div>
+      
     </header>
   );
 };
