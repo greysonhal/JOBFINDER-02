@@ -23,7 +23,7 @@ const Navbar = () => {
     },[]);
 
 
-  const isJobSeeker = authuser && authuser.displayName === "seeker";
+  const isJobSeeker = authuser && (authuser.displayName === "seeker"|| authuser.providerData[0]?.providerId === "google.com");
   const isEmployer = authuser && authuser.displayName === "employer";
 
   
@@ -95,7 +95,7 @@ const Navbar = () => {
           {authuser ? (
             <>
               <div className="flex gap-4 items-center">
-                <div class="flex -space-x-2 overflow-hidden">
+                <div className="flex -space-x-2 overflow-hidden">
                   {
                     authuser?.photoURL ? <> <img
                     className="inline-block h-10 w-10 rounded-full ring-2 ring-white"

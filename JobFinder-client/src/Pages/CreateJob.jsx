@@ -152,16 +152,39 @@ const CreateJob = () => {
 
       {/* 7th row */}
       <div className="w-full">
-      <label className='block mb-2 text-lg'>Job Description</label>
+      <label className='block mb-2 text-lg'>Job Summary</label>
       <textarea className='w-full pl-3 py-1.5 focus:outline-none' 
       rows={6}
-      placeholder='Job Description'
+      placeholder='Job Summary'
       defaultValue={""}
       
       
-      {...register("description")}></textarea>
+      {...register("summary")}></textarea>
 
       </div>
+      {/* 7th row */}
+      <div className="w-full">
+      <label className='block mb-2 text-lg'>Job Qualifications</label>
+      <textarea className='w-full pl-3 py-1.5 focus:outline-none' 
+      rows={6}
+      placeholder='Job Qualifications'
+      defaultValue={""}
+      
+      
+      {...register("qualifications")}></textarea>
+
+      </div>
+      {/* 7th row */}
+     {/* Add automatic numbering to responsibilities */}
+     <div className="w-full">
+            <label className="block mb-2 text-lg">Roles and Responsibilities</label>
+            <textarea
+              className="w-full pl-3 py-1.5 focus:outline-none"
+              rows={6}
+              {...register("responsibilities")}
+              placeholder="Enter job responsibilities here, each separated by a new line..."
+            />
+          </div>
 
       {/*last row */}
       <div className='w-full'>

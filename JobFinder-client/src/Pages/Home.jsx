@@ -15,20 +15,11 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
-  
-    // Array of promises for fetching data from different files
-    const fetchJobs1 = fetch("jobs.json").then((res) => res.json());
-    const fetchJobs2 = fetch("http://localhost:5000/all-jobs").then((res) => res.json());
-  
-    // Using Promise.all to wait for all promises to resolve
-    Promise.all([fetchJobs1, fetchJobs2])
-      .then(([jobsData1, jobsData2]) => {
-        // Combine or process the data as needed
-        const combinedJobsData = [...jobsData1, ...jobsData2];
-  
-        // Set the combined data to the state
-        setJobs(combinedJobsData);
-        setIsLoading(false);
+    fetch("http://localhost:5000/all-jobs")
+    .then((res) => res.json())
+    .then((data) => {
+      setJobs(data);
+      setIsLoading(false);
       })
       .catch((error) => {
         // Handle errors here

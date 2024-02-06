@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import { useLocation, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
 
 import {
   FaFacebookF,
@@ -40,15 +41,25 @@ const Login = () => {
   const handleRegister = async () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
-
+  
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+  
+      // Check if the user is newly created (first time signing in)
+      if (result.additionalUserInfo.isNewUser) {
+        // Update user profile with role as "seeker"
+        await updateProfile(auth.currentUser, {
+          displayName: "seeker",
+        });
+      }
+  
       navigate(from, { replace: true });
     } catch (error) {
       console.error("Google login error:", error);
       // Handle the error or display a message to the user
     }
   };
+  
 
   return (
     <div className="flex flex-col min-h-screen  mt-20">
@@ -103,7 +114,7 @@ const Login = () => {
             </div>
           </form>
           <div className="mt-8 text-center w-full mx-auto">
-            <p className="mb-4">Sign up with Social</p>
+            <p className="mb-4">Sign In As A JobSeeker!</p>
             <div className="flex items-center justify-center gap-4 w-full mx-auto">
               <button
                 className="border-2 text-blue hover:text-white hover:bg-blue font-bold p-3 rounded-full focus:outline-none focus:shadow-outline flex items-center gap-2 mb-3"

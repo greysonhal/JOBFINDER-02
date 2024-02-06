@@ -12,6 +12,7 @@ import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import SignSeeker from "../Pages/SignSeeker";
 import SignEmployer from "../Pages/SignEmployer";
+import JobDetails from "../Pages/JobDetails";
   
 
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       path: "/sign-employer",
       element: <SignEmployer/>
     },
+    {
+      path:"/jobs/:id",
+      element: <JobDetails/>,
+    }
   ]);
 
 
