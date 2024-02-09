@@ -1,12 +1,21 @@
-import React, {useState, useContext}from 'react'
+import React, {useState, useContext,useEffect}from 'react'
 import { useForm } from "react-hook-form"
 import CreatableSelect from "react-select/creatable"
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 const CreateJob = () => {
     const[selectedOption, setSelectedOption]= useState(null);
     const { user } = useContext(AuthContext)
+   
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/login";
+    useEffect(() => {
+      if (!user) {
+          navigate(from, { replace: true })};
+        },[])
 
+    
     const {
         register,
         handleSubmit,reset,

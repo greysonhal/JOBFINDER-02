@@ -1,9 +1,14 @@
 import React, { useContext,useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { AuthContext } from "../context/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MyJobs = () => {
   const { user } = useContext(AuthContext);
+ 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/login";
       const [jobs,setJobs]= useState([]);
       const [searchText,setSearchText]= useState("");
       const [isLoading,setIsLoading]= useState(true);
@@ -14,6 +19,9 @@ const MyJobs = () => {
 
 
       useEffect(() => {
+        if (!user) {
+          navigate(from, { replace: true });
+        }
         setIsLoading(true);
         fetch(`http://localhost:5000/myJobs/${user?.email}`)
           .then((res) => res.json())
