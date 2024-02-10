@@ -94,8 +94,8 @@ const Navbar = () => {
         <div className="text-base text-primary font-medium space-x-5 hidden lg:block">
           {authuser ? (
             <>
-              <div className="flex gap-4 items-center">
-                <div className="flex -space-x-2 overflow-hidden">
+              <div className="flex gap-4 items-center mt-4">
+                <div className="flex -space-x-2 overflow-hidden ">
                   {
                     authuser?.photoURL ? <> <img
                     className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
@@ -111,7 +111,7 @@ const Navbar = () => {
                 <button onClick={handleLogout} className="py-2 px-5 border rounded hover:bg-blue hover:text-white">Log out</button>
               </div>
               <div>
-                {authuser ? (<p>{`Signed in as ${authuser.email}`}</p>):<p>out</p>}
+                {authuser ? (<p >{`Signed in as ${authuser.email}`}</p>):<p>out</p>}
               </div>
             </>
           ) : (
